@@ -484,39 +484,39 @@ export default function AppointmentsPage() {
                 닫기
               </button>
               
-              {/* 퀸만 상태 변경 가능 - 모든 상태에서 변경 가능 */}
+              {/* 퀸만 상태 변경 가능 - 언제든지 상태 변경 가능 */}
               {isQueen && (
                 <>
                   <button
                     onClick={() => handleUpdateAppointmentStatus('rejected')}
                     className={`flex-1 px-4 py-2 rounded-md transition-colors ${
                       selectedAppointment.status === 'rejected' 
-                        ? 'bg-red-400 text-red-100 cursor-default' 
+                        ? 'bg-red-700 text-white border-2 border-red-300' 
                         : 'bg-red-600 text-white hover:bg-red-700'
                     }`}
-                    disabled={selectedAppointment.status === 'rejected'}
                   >
-                    {selectedAppointment.status === 'rejected' ? '✓ 거절됨' : '거절'}
+                    {selectedAppointment.status === 'rejected' ? '✓ 거절됨' : '거절하기'}
                   </button>
                   <button
                     onClick={() => handleUpdateAppointmentStatus('approved')}
                     className={`flex-1 px-4 py-2 rounded-md transition-colors ${
                       selectedAppointment.status === 'approved' 
-                        ? 'bg-green-400 text-green-100 cursor-default' 
+                        ? 'bg-green-700 text-white border-2 border-green-300' 
                         : 'bg-green-600 text-white hover:bg-green-700'
                     }`}
-                    disabled={selectedAppointment.status === 'approved'}
                   >
-                    {selectedAppointment.status === 'approved' ? '✓ 승인됨' : '승인'}
+                    {selectedAppointment.status === 'approved' ? '✓ 승인됨' : '승인하기'}
                   </button>
-                  {(selectedAppointment.status === 'approved' || selectedAppointment.status === 'rejected') && (
-                    <button
-                      onClick={() => handleUpdateAppointmentStatus('pending')}
-                      className="flex-1 px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
-                    >
-                      대기중으로 변경
-                    </button>
-                  )}
+                  <button
+                    onClick={() => handleUpdateAppointmentStatus('pending')}
+                    className={`flex-1 px-4 py-2 rounded-md transition-colors ${
+                      selectedAppointment.status === 'pending' 
+                        ? 'bg-yellow-700 text-white border-2 border-yellow-300' 
+                        : 'bg-yellow-600 text-white hover:bg-yellow-700'
+                    }`}
+                  >
+                    {selectedAppointment.status === 'pending' ? '✓ 대기중' : '대기중으로'}
+                  </button>
                 </>
               )}
             </div>
